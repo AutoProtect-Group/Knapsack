@@ -1,6 +1,6 @@
 <?php
 
-use DusanKasan\Knapsack\Collection;
+use AutoProtect\Knapsack\Collection;
 use Symfony\Component\Console\Helper\Table;
 
 include_once __DIR__ . "/../../vendor/autoload.php";
@@ -20,29 +20,26 @@ function getIntegerReport()
 
         return $array;
     };
-    $mapper = function ($item) {
-        return $item + 1;
+    $mapper = function ($temp, $item) {
+        return $item + $temp;
     };
 
     for ($j = 0; $j < REPEAT_COUNT; $j++) {
         $array = $fixtureProvider();
-        
+
+
         $arrayMapStart = microtime(true);
-        $mappedArray = array_map($mapper, $array);
-        foreach ($mappedArray as $item) {
-        }
+        array_reduce($array, $mapper, 0);
         $arrayMapDeltas += microtime(true) - $arrayMapStart;
 
         $collection = new Collection($array);
         $collectionMapStart = microtime(true);
-        $mappedCollection = $collection->map($mapper);
-        foreach ($mappedCollection as $item) {
-        }
+        $collection->reduce($mapper, 0);
         $collectionMapDeltas += microtime(true) - $collectionMapStart;
     }
 
     return [
-        'name' => 'array_map vs Collection::map on ' . NUMBER_OF_ITEMS . ' integers (addition)',
+        'name' => 'array_reduce vs Collection::reduce on ' . NUMBER_OF_ITEMS . ' integers (addition)',
         'native' => (float) $arrayMapDeltas / REPEAT_COUNT,
         'collection' => (float) $collectionMapDeltas / REPEAT_COUNT
     ];
@@ -60,29 +57,25 @@ function getStringReport()
 
         return $array;
     };
-    $mapper = function ($item) {
-        return $item . 'qwe';
+    $mapper = function ($temp, $item) {
+        return $temp . $item;
     };
 
     for ($j = 0; $j < REPEAT_COUNT; $j++) {
         $array = $fixtureProvider();
         $arrayMapStart = microtime(true);
-        $mappedArray = array_map($mapper, $array);
-        foreach ($mappedArray as $item) {
-        }
+        array_reduce($array, $mapper, '');
         $arrayMapDeltas += microtime(true) - $arrayMapStart;
 
         $array = $fixtureProvider();
         $collection = new Collection($array);
         $collectionMapStart = microtime(true);
-        $mappedCollection = $collection->map($mapper);
-        foreach ($mappedCollection as $item) {
-        }
+        $collection->reduce($mapper, '');
         $collectionMapDeltas += microtime(true) - $collectionMapStart;
     }
 
     return [
-        'name' => 'array_map vs Collection::map on ' . NUMBER_OF_ITEMS . ' strings (concatenation)',
+        'name' => 'array_reduce vs Collection::reduce on ' . NUMBER_OF_ITEMS . ' strings (concatenation)',
         'native' => (float) $arrayMapDeltas / REPEAT_COUNT,
         'collection' => (float) $collectionMapDeltas / REPEAT_COUNT
     ];
@@ -102,29 +95,25 @@ function getObjectReport()
 
         return $array;
     };
-    $mapper = function ($item) {
-        return $item->asd;
+    $mapper = function ($temp, $item) {
+        return $temp + $item->asd;
     };
 
     for ($j = 0; $j < REPEAT_COUNT; $j++) {
         $array = $fixtureProvider();
         $arrayMapStart = microtime(true);
-        $mappedArray = array_map($mapper, $array);
-        foreach ($mappedArray as $item) {
-        }
+        array_reduce($array, $mapper, 0);
         $arrayMapDeltas += microtime(true) - $arrayMapStart;
 
         $array = $fixtureProvider();
         $collection = new Collection($array);
         $collectionMapStart = microtime(true);
-        $mappedCollection = $collection->map($mapper);
-        foreach ($mappedCollection as $item) {
-        }
+        $collection->reduce($mapper, 0);
         $collectionMapDeltas += microtime(true) - $collectionMapStart;
     }
 
     return [
-        'name' => 'array_map vs Collection::map on ' . NUMBER_OF_ITEMS . ' objects (object to field value)',
+        'name' => 'array_reduce vs Collection::reduce on ' . NUMBER_OF_ITEMS . ' object (object to field value)',
         'native' => (float) $arrayMapDeltas / REPEAT_COUNT,
         'collection' => (float) $collectionMapDeltas / REPEAT_COUNT
     ];
@@ -142,34 +131,30 @@ function getComplexOperationReport()
 
         return $array;
     };
-    $mapper = function ($item) {
+    $mapper = function ($temp, $item) {
         $result = 0;
         for (; $item > 0; $item--) {
             $result += $item;
         }
 
-        return $result;
+        return $temp + $result;
     };
 
     for ($j = 0; $j < REPEAT_COUNT; $j++) {
         $array = $fixtureProvider();
         $arrayMapStart = microtime(true);
-        $mappedArray = array_map($mapper, $array);
-        foreach ($mappedArray as $item) {
-        }
+        array_reduce($array, $mapper, 0);
         $arrayMapDeltas += microtime(true) - $arrayMapStart;
 
         $array = $fixtureProvider();
         $collection = new Collection($array);
         $collectionMapStart = microtime(true);
-        $mappedCollection = $collection->map($mapper);
-        foreach ($mappedCollection as $item) {
-        }
+        $collection->reduce($mapper, 0);
         $collectionMapDeltas += microtime(true) - $collectionMapStart;
     }
 
     return [
-        'name' => 'array_map vs Collection::map on ' . NUMBER_OF_ITEMS . ' integers n, counting sum(0, n) the naive way',
+        'name' => 'array_reduce vs Collection::reduce for ' . NUMBER_OF_ITEMS . ' integers n, counting sum(0, n) the naive way',
         'native' => (float) $arrayMapDeltas / REPEAT_COUNT,
         'collection' => (float) $collectionMapDeltas / REPEAT_COUNT
     ];
@@ -187,29 +172,25 @@ function getHashReport()
 
         return $array;
     };
-    $mapper = function ($item) {
-        return md5($item);
+    $mapper = function ($temp, $item) {
+        return md5($temp . $item);
     };
 
     for ($j = 0; $j < REPEAT_COUNT; $j++) {
         $array = $fixtureProvider();
         $arrayMapStart = microtime(true);
-        $mappedArray = array_map($mapper, $array);
-        foreach ($mappedArray as $item) {
-        }
+        array_reduce($array, $mapper, '');
         $arrayMapDeltas += microtime(true) - $arrayMapStart;
 
         $array = $fixtureProvider();
         $collection = new Collection($array);
         $collectionMapStart = microtime(true);
-        $mappedCollection = $collection->map($mapper);
-        foreach ($mappedCollection as $item) {
-        }
+        $collection->reduce($mapper, '');
         $collectionMapDeltas += microtime(true) - $collectionMapStart;
     }
 
     return [
-        'name' => 'array_map vs Collection::map on ' . NUMBER_OF_ITEMS . ' md5 invocations',
+        'name' => 'array_reduce vs Collection::reduce on ' . NUMBER_OF_ITEMS . ' md5 invocations',
         'native' => (float) $arrayMapDeltas / REPEAT_COUNT,
         'collection' => (float) $collectionMapDeltas / REPEAT_COUNT
     ];

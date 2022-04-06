@@ -1,14 +1,15 @@
 <?php
 
-namespace DusanKasan\Knapsack;
+namespace AutoProtect\Knapsack;
 
 use ArrayIterator;
-use DusanKasan\Knapsack\Exceptions\InvalidArgument;
-use DusanKasan\Knapsack\Exceptions\InvalidReturnValue;
+use AutoProtect\Knapsack\Exceptions\InvalidArgument;
+use AutoProtect\Knapsack\Exceptions\InvalidReturnValue;
 use IteratorAggregate;
+use ReturnTypeWillChange;
 use Traversable;
 
-class Collection implements IteratorAggregate, \Serializable, CollectionInterface
+class Collection implements IteratorAggregate, CollectionInterface
 {
     use CollectionTrait;
 
@@ -88,13 +89,14 @@ class Collection implements IteratorAggregate, \Serializable, CollectionInterfac
      */
     public static function range($start = 0, $end = null, $step = 1)
     {
-        return \DusanKasan\Knapsack\range($start, $end, $step);
+        return range($start, $end, $step);
     }
 
     /**
      * {@inheritdoc}
      * @throws InvalidReturnValue
      */
+    #[ReturnTypeWillChange]
     public function getIterator()
     {
         if ($this->inputFactory) {

@@ -1,8 +1,8 @@
 <?php
 
-namespace DusanKasan\Knapsack;
+namespace AutoProtect\Knapsack;
 
-use DusanKasan\Knapsack\Exceptions\InvalidReturnValue;
+use AutoProtect\Knapsack\Exceptions\InvalidReturnValue;
 
 interface CollectionInterface
 {
@@ -125,7 +125,7 @@ interface CollectionInterface
      * @param mixed $key
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function get($key, $convertToCollection = false);
 
@@ -138,7 +138,7 @@ interface CollectionInterface
      * @param mixed $default
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function getOrDefault($key, $default = null, $convertToCollection = false);
 
@@ -429,7 +429,7 @@ interface CollectionInterface
      *
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function first($convertToCollection = false);
 
@@ -439,7 +439,7 @@ interface CollectionInterface
      *
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function last($convertToCollection = false);
 
@@ -457,7 +457,7 @@ interface CollectionInterface
      *
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function second($convertToCollection = false);
 
@@ -467,7 +467,7 @@ interface CollectionInterface
      *
      * @param array|\Traversable $collection
      * @return Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function combine($collection);
 

@@ -1,8 +1,5 @@
-extensions:
-  Cjm\PhpSpec\Extension\TypeHintedMethodsExtension: ~
-
 suites:
   default:
     spec_path: tests
-    namespace: DusanKasan\Knapsack
-    psr4_prefix: DusanKasan\Knapsack
+    namespace: AutoProtect\Knapsack
+    psr4_prefix: AutoProtect\Knapsack

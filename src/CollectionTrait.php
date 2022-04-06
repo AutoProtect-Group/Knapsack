@@ -1,8 +1,8 @@
 <?php
 
-namespace DusanKasan\Knapsack;
+namespace AutoProtect\Knapsack;
 
-use DusanKasan\Knapsack\Exceptions\InvalidReturnValue;
+use AutoProtect\Knapsack\Exceptions\InvalidReturnValue;
 
 trait CollectionTrait
 {
@@ -99,7 +99,7 @@ trait CollectionTrait
      */
     public function sort(callable $function)
     {
-        return \DusanKasan\Knapsack\sort($this->getItems(), $function);
+        return \AutoProtect\Knapsack\sort($this->getItems(), $function);
     }
 
     /**
@@ -145,7 +145,7 @@ trait CollectionTrait
      */
     public function each(callable $function)
     {
-        return \DusanKasan\Knapsack\each($this->getItems(), $function);
+        return \AutoProtect\Knapsack\each($this->getItems(), $function);
     }
 
     /**
@@ -166,7 +166,7 @@ trait CollectionTrait
      * @param mixed $key
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function get($key, $convertToCollection = false)
     {
@@ -184,7 +184,7 @@ trait CollectionTrait
      * @param mixed $default
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function getOrDefault($key, $default = null, $convertToCollection = false)
     {
@@ -514,7 +514,7 @@ trait CollectionTrait
      */
     public function shuffle()
     {
-        return \DusanKasan\Knapsack\shuffle($this->getItems());
+        return \AutoProtect\Knapsack\shuffle($this->getItems());
     }
 
     /**
@@ -583,7 +583,7 @@ trait CollectionTrait
      *
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function first($convertToCollection = false)
     {
@@ -598,7 +598,7 @@ trait CollectionTrait
      *
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function last($convertToCollection = false)
     {
@@ -624,7 +624,7 @@ trait CollectionTrait
      *
      * @param bool $convertToCollection
      * @return mixed|Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function second($convertToCollection = false)
     {
@@ -639,7 +639,7 @@ trait CollectionTrait
      *
      * @param array|\Traversable $collection
      * @return Collection
-     * @throws \DusanKasan\Knapsack\Exceptions\ItemNotFound
+     * @throws \AutoProtect\Knapsack\Exceptions\ItemNotFound
      */
     public function combine($collection)
     {
@@ -755,7 +755,7 @@ trait CollectionTrait
      */
     public function extract($keyPath)
     {
-        return \DusanKasan\Knapsack\extract($this->getItems(), $keyPath);
+        return \AutoProtect\Knapsack\extract($this->getItems(), $keyPath);
     }
 
     /**
@@ -843,7 +843,7 @@ trait CollectionTrait
      */
     public function max()
     {
-        return \DusanKasan\Knapsack\max($this->getItems());
+        return \AutoProtect\Knapsack\max($this->getItems());
     }
 
     /**
@@ -853,7 +853,7 @@ trait CollectionTrait
      */
     public function min()
     {
-        return \DusanKasan\Knapsack\min($this->getItems());
+        return \AutoProtect\Knapsack\min($this->getItems());
     }
 
     /**

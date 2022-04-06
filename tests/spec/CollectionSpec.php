@@ -1,19 +1,21 @@
 <?php
 
-namespace spec\DusanKasan\Knapsack;
+namespace spec\AutoProtect\Knapsack;
 
 use ArrayIterator;
 use DOMXPath;
-use DusanKasan\Knapsack\Collection;
-use DusanKasan\Knapsack\Exceptions\InvalidArgument;
-use DusanKasan\Knapsack\Exceptions\InvalidReturnValue;
-use DusanKasan\Knapsack\Exceptions\ItemNotFound;
-use DusanKasan\Knapsack\Exceptions\NoMoreItems;
-use DusanKasan\Knapsack\Tests\Helpers\PlusOneAdder;
+use AutoProtect\Knapsack\Collection;
+use AutoProtect\Knapsack\CollectionInterface;
+use AutoProtect\Knapsack\Exceptions\InvalidArgument;
+use AutoProtect\Knapsack\Exceptions\InvalidReturnValue;
+use AutoProtect\Knapsack\Exceptions\ItemNotFound;
+use AutoProtect\Knapsack\Exceptions\NoMoreItems;
+use tests\AutoProtect\Knapsack\Helpers\Car;
+use tests\AutoProtect\Knapsack\Helpers\PlusOneAdder;
 use IteratorAggregate;
 use PhpSpec\ObjectBehavior;
-use Serializable;
 use Traversable;
+use function AutoProtect\Knapsack\concat;
 
 /**
  * @mixin Collection
@@ -25,7 +27,7 @@ class CollectionSpec extends ObjectBehavior
         $this->beConstructedWith([1, 2, 3]);
         $this->shouldHaveType(Collection::class);
         $this->shouldHaveType(Traversable::class);
-        $this->shouldHaveType(Serializable::class);
+        $this->shouldHaveType(CollectionInterface::class);
     }
 
     function it_can_be_instantiated_from_iterator()
@@ -403,8 +405,8 @@ class CollectionSpec extends ObjectBehavior
             )
             ->shouldReturn('not found');
 
-        $this->find('\DusanKasan\Knapsack\isCollection', null, true)->first()->shouldReturn(5);
-        $this->find('\DusanKasan\Knapsack\isCollection')->shouldReturn([5]);
+        $this->find('\AutoProtect\Knapsack\isCollection', null, true)->first()->shouldReturn(5);
+        $this->find('\AutoProtect\Knapsack\isCollection')->shouldReturn([5]);
     }
 
     function it_can_count_by()
@@ -1050,7 +1052,7 @@ class CollectionSpec extends ObjectBehavior
     {
         $original = Collection::from([1, 2, 3])->take(2);
         $this->beConstructedWith([1, 2, 3, 4]);
-        $this->shouldHaveType(Serializable::class);
+        $this->shouldHaveType(CollectionInterface::class);
         $this->unserialize($original->serialize());
         $this->toArray()->shouldReturn([1, 2]);
     }
@@ -1059,19 +1061,19 @@ class CollectionSpec extends ObjectBehavior
     {
         $this->beConstructedWith([1, 2, 3]);
         $this->zip(['a' => 1, 'b' => 2, 'c' => 4])
-            ->map('\DusanKasan\Knapsack\toArray')
+            ->map('\AutoProtect\Knapsack\toArray')
             ->toArray()
             ->shouldReturn([[1, 'a' => 1], [1 => 2, 'b' => 2], [2 => 3, 'c' => 4]]);
 
         $this->zip([4, 5, 6], [7, 8, 9])
-            ->map('\DusanKasan\Knapsack\values')
-            ->map('\DusanKasan\Knapsack\toArray')
+            ->map('\AutoProtect\Knapsack\values')
+            ->map('\AutoProtect\Knapsack\toArray')
             ->toArray()
             ->shouldReturn([[1, 4, 7], [2, 5, 8], [3, 6, 9]]);
 
         $this->zip([4, 5])
-            ->map('\DusanKasan\Knapsack\values')
-            ->map('\DusanKasan\Knapsack\toArray')
+            ->map('\AutoProtect\Knapsack\values')
+            ->map('\AutoProtect\Knapsack\toArray')
             ->toArray()
             ->shouldReturn([[1, 4], [2, 5]]);
     }
@@ -1081,7 +1083,7 @@ class CollectionSpec extends ObjectBehavior
         $this->beConstructedWith([1, 2, 3]);
         $this
             ->transform(function (Collection $collection) {
-                return $collection->map('\DusanKasan\Knapsack\increment');
+                return $collection->map('\AutoProtect\Knapsack\increment');
             })
             ->toArray()
             ->shouldReturn([2, 3, 4]);
@@ -1279,18 +1281,18 @@ class CollectionSpec extends ObjectBehavior
         $this->beConstructedWith([1, 3, 2]);
 
         $this
-            ->sort('\DusanKasan\Knapsack\compare')
+            ->sort('\AutoProtect\Knapsack\compare')
             ->values()
             ->toArray()
             ->shouldReturn([1, 2, 3]);
 
         $this
-            ->map('\DusanKasan\Knapsack\compare')
+            ->map('\AutoProtect\Knapsack\compare')
             ->toArray()
             ->shouldReturn([1, 1, 0]);
 
         $this
-            ->map('\DusanKasan\Knapsack\decrement')
+            ->map('\AutoProtect\Knapsack\decrement')
             ->toArray()
             ->shouldReturn([0, 2, 1]);
     }
@@ -1307,8 +1309,8 @@ class CollectionSpec extends ObjectBehavior
                 [1, 2, 3],
                 new ArrayIterator(['a', 'b', 'c']),
                 true,
-                new \DusanKasan\Knapsack\Tests\Helpers\Car('sedan', 5),
-                \DusanKasan\Knapsack\concat([1], [1]),
+                new Car('sedan', 5),
+                concat([1], [1]),
             ]
         );
 
@@ -1323,7 +1325,7 @@ class CollectionSpec extends ObjectBehavior
                 ['a', 'b', 'c'],
                 true,
                 [
-                    'DusanKasan\Knapsack\Tests\Helpers\Car' => [
+                    'tests\AutoProtect\Knapsack\Helpers\Car' => [
                         'numberOfSeats' => 5,
                      ],
 
@@ -1355,7 +1357,7 @@ class CollectionSpec extends ObjectBehavior
                 ['a', 'b', 'c'],
                 true,
                 [
-                    'DusanKasan\Knapsack\Tests\Helpers\Car' => [
+                    'tests\AutoProtect\Knapsack\Helpers\Car' => [
                         'numberOfSeats' => 5,
                     ],
                 ],

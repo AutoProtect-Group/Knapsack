@@ -1,34 +1,33 @@
 # Knapsack
 **Collection pipeline library for PHP**
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5fcb3dc2-2061-4da3-853b-a5e2a35a35fb/mini.png)](https://insight.sensiolabs.com/projects/5fcb3dc2-2061-4da3-853b-a5e2a35a35fb) [![Build Status](https://scrutinizer-ci.com/g/DusanKasan/Knapsack/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DusanKasan/Knapsack/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/DusanKasan/Knapsack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/DusanKasan/Knapsack/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DusanKasan/Knapsack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DusanKasan/Knapsack/?branch=master)
+Knapsack is a collection library for PHP >= 8 that implements most of the sequence operations proposed by [Clojures sequences](http://clojure.org/sequences) plus some additional ones. All its features are available as functions (for functional programming) and as a [collection pipeline](http://martinfowler.com/articles/collection-pipeline/) object methods.
 
-Knapsack is a collection library for PHP >= 5.6 that implements most of the sequence operations proposed by [Clojures sequences](http://clojure.org/sequences) plus some additional ones. All its features are available as functions (for functional programming) and as a [collection pipeline](http://martinfowler.com/articles/collection-pipeline/) object methods.
-
-The heart of Knapsack is its [Collection class](https://github.com/DusanKasan/Knapsack/blob/master/src/Collection.php). However its every method calls a simple function with the same name that does the actual heavy lifting. These are located in `DusanKasan\Knapsack` namespace and you can find them [here](https://github.com/DusanKasan/Knapsack/blob/master/src/collection_functions.php). Collection is a [Traversable](https://secure.php.net/manual/en/class.traversable.php) implementor (via [IteratorAggregate](https://secure.php.net/manual/en/class.iteratoraggregate.php)) that accepts Traversable object, array or even a callable that produces a Traversable object or array as constructor argument. It provides most of Clojures sequence functionality plus some extra features. It is also immutable - operations preformed on the collection will return new collection (or value) instead of modifying the original collection.
+The heart of Knapsack is its [Collection class](https://github.com/AutoProtect-Group/Knapsack/blob/master/src/Collection.php). However its every method calls a simple function with the same name that does the actual heavy lifting. These are located in `AutoProtect\Knapsack` namespace and you can find them [here](https://github.com/AutoProtect-Group/Knapsack/blob/master/src/collection_functions.php). Collection is a [Traversable](https://secure.php.net/manual/en/class.traversable.php) implementor (via [IteratorAggregate](https://secure.php.net/manual/en/class.iteratoraggregate.php)) that accepts Traversable object, array or even a callable that produces a Traversable object or array as constructor argument. It provides most of Clojures sequence functionality plus some extra features. It is also immutable - operations preformed on the collection will return new collection (or value) instead of modifying the original collection.
  
 Most of the methods of Collection return lazy collections (such as filter/map/etc.). However, some return non-lazy collections (reverse) or simple values (count). For these operations all of the items in the collection must be iterated over (and realized). There are also operations (drop) that iterate over some items of the collection but do not affect/return them in the result. This behaviour as well as laziness is noted for each of the operations.  
 
-If you want more example usage beyond what is provided here, check the [specs](https://github.com/DusanKasan/Knapsack/tree/master/tests/spec) and/or [scenarios](https://github.com/DusanKasan/Knapsack/tree/master/tests/scenarios). There are also [performance tests](https://github.com/DusanKasan/Knapsack/tree/master/tests/performance) you can run on your machine and see the computation time impact of this library (the output of these is included below).
+If you want more example usage beyond what is provided here, check the [specs](https://github.com/AutoProtect-Group/Knapsack/tree/master/tests/spec) and/or [scenarios](https://github.com/AutoProtect-Group/Knapsack/tree/master/tests/scenarios). There are also [performance tests](https://github.com/AutoProtect-Group/Knapsack/tree/master/tests/performance) you can run on your machine and see the computation time impact of this library (the output of these is included below).
 
-Feel free to report any [issues](https://github.com/DusanKasan/Knapsack/issues) you find. I will do my best to fix them as soon as possible, but community [pull requests](https://github.com/DusanKasan/Knapsack/pulls) to fix them are more than welcome.
+Feel free to report any [issues](https://github.com/AutoProtect-Group/Knapsack/issues) you find. I will do my best to fix them as soon as possible, but community [pull requests](https://github.com/AutoProtect-Group/Knapsack/pulls) to fix them are more than welcome.
 
 ## Documentation
-Check out the documentation (which is prettified version of this readme) at http://dusankasan.github.io/Knapsack
+Check out the documentation (which is prettified version of this readme) at http://AutoProtect-Group.github.io/Knapsack
 
 ## Installation
 
 Require this package using Composer.
 
 ```
-composer require dusank/knapsack
+composer require autoprotect-group/knapsack
 ```
 
 ## Usage
 
 ### Instantiate via static or dynamic constructor
+
 ```php
-use DusanKasan\Knapsack\Collection;
+use AutoProtect\Knapsack\Collection;
 
 $collection1 = new Collection([1, 2, 3]);
 $collection2 = Collection::from([1, 2, 3]); //preferred since you can call methods on its result directly.
@@ -75,7 +74,7 @@ echo $result; //6
 $result = Collection::iterate([1,1], function($v) {
         return [$v[1], $v[0] + $v[1]]; //[1, 2], [2, 3] ...
     })
-    ->map('\DusanKasan\Knapsack\first') //one of the collection functions
+    ->map('\AutoProtect\Knapsack\first') //one of the collection functions
     ->take(5);
     
 foreach ($result as $item) {
@@ -153,7 +152,7 @@ foreach ($result as $key => $item) {
 ```
 
 ### Collection trait is provided
-If you wish to use all the Collection methods in your existing classes directly, no need to proxy their calls, you can just use the provided [CollectionTrait](https://github.com/DusanKasan/Knapsack/blob/master/src/CollectionTrait.php). This will work on any Traversable by default. In any other class you will have to override the getItems() method provided by the trait. Keep in mind that after calling filter or any other method that returns collection, the returned type will be actually Collection, not the original Traversable. 
+If you wish to use all the Collection methods in your existing classes directly, no need to proxy their calls, you can just use the provided [CollectionTrait](https://github.com/AutoProtect-Group/Knapsack/blob/master/src/CollectionTrait.php). This will work on any Traversable by default. In any other class you will have to override the getItems() method provided by the trait. Keep in mind that after calling filter or any other method that returns collection, the returned type will be actually Collection, not the original Traversable. 
 
 ```php
 class AwesomeIterator extends ArrayIterator {
@@ -445,6 +444,7 @@ will be change into a format originalKey//duplicateCounter where duplicateCounte
 ```php
 Collection::from([1, 3, 3, 2])->dump(); //[1, 3, 3, 2]
 ```
+
 ```php
 $collection = Collection::from(
     [
@@ -456,8 +456,8 @@ $collection = Collection::from(
         [1, 2, 3],
         new ArrayIterator(['a', 'b', 'c']),
         true,
-        new \DusanKasan\Knapsack\Tests\Helpers\Car('sedan', 5),
-        \DusanKasan\Knapsack\concat([1], [1])
+        new \AutoProtect\Knapsack\Tests\Helpers\Car('sedan', 5),
+        \AutoProtect\Knapsack\concat([1], [1])
     ]
 );
 
@@ -483,7 +483,7 @@ $collection->dump();
 //    ['a', 'b', 'c'],
 //    true,
 //    [
-//        'DusanKasan\Knapsack\Tests\Helpers\Car' => [
+//        'AutoProtect\Knapsack\Tests\Helpers\Car' => [
 //            'numberOfSeats' => 5,
 //        ],
 //    ],
@@ -580,7 +580,7 @@ Collection::from([1, 3, 3, 2])
 toArray(values(filter([1, 3, 3, 2], function ($value) {return $value > 2;}))); //[3, 3]
 ```
 
-If `$function` is not provided, `\DusanKasan\Knapsack\identity` is used so every falsy value is removed. 
+If `$function` is not provided, `\AutoProtect\Knapsack\identity` is used so every falsy value is removed. 
 ```php
 Collection::from([0, 0.0, false, null, "", []])
     ->filter()
@@ -733,7 +733,7 @@ Collection::from([
         ['letter' => 'B', 'type' => 'caps'],
     ])
     ->groupByKey('type')
-    ->map('DusanKasan\Knapsack\toArray')
+    ->map('AutoProtect\Knapsack\toArray')
     ->toArray();
     // [ 'caps' => [['letter' => 'A', 'type' => 'caps'], ...], 'small' => [['letter' => 'a', 'type' => 'small']]]
 ```
@@ -766,7 +766,7 @@ Collection::from([1, 3, 3, 2])
     ->toArray(); //[1 => 1, 3 => 3, 2 => 2]
 ```
 ```php
-toArray(indexBy([1, 3, 3, 2], '\DusanKasan\Knapsack\identity')); //[1 => 1, 3 => 3, 2 => 2]
+toArray(indexBy([1, 3, 3, 2], '\AutoProtect\Knapsack\identity')); //[1 => 1, 3 => 3, 2 => 2]
 ```
 
 #### interleave(iterable ...$collections) : Collection
@@ -858,7 +858,7 @@ Collection::from([1, 3, 3, 2])
     ->toArray(); //[2, 4, 4, 3]
 ```
 ```php
-toArray(map([1, 3, 3, 2], '\DusanKasan\Knapsack\increment')); //[2, 4, 4, 3]
+toArray(map([1, 3, 3, 2], '\AutoProtect\Knapsack\increment')); //[2, 4, 4, 3]
 ```
 
 #### mapcat(callable $mapper) : Collection
@@ -1320,7 +1320,7 @@ $transformer = function (Collection $collection) {
         ->filter(function ($item) {
             return $item > 1;
         })
-        ->map('\DusanKasan\Knapsack\increment');
+        ->map('\AutoProtect\Knapsack\increment');
 };
 
 Collection::from([1, 3, 3, 2])
@@ -1370,16 +1370,16 @@ Returns a lazy collection of non-lazy collections of items from nth position fro
 ```php
 Collection::from([1, 2, 3])
     ->zip(['a' => 1, 'b' => 2, 'c' => 4])
-    ->map('\DusanKasan\Knapsack\toArray')
+    ->map('\AutoProtect\Knapsack\toArray')
     ->toArray(); //[[1, 'a' => 1], [1 => 2, 'b' => 2], [2 => 3, 'c' => 4]]
 
 Collection::from([1, 2, 3])
     ->zip(['a' => 1, 'b' => 2])
-    ->map('\DusanKasan\Knapsack\toArray')
+    ->map('\AutoProtect\Knapsack\toArray')
     ->toArray(); //[[1, 'a' => 1], [1 => 2, 'b' => 2]]
 ```
 ```php
-toArray(map(zip([1, 2, 3], ['a' => 1, 'b' => 2, 'c' => 4]), '\DusanKasan\Knapsack\toArray')); //[[1, 'a' => 1], [1 => 2, 'b' => 2], [2 => 3, 'c' => 4]]
+toArray(map(zip([1, 2, 3], ['a' => 1, 'b' => 2, 'c' => 4]), '\AutoProtect\Knapsack\toArray')); //[[1, 'a' => 1], [1 => 2, 'b' => 2], [2 => 3, 'c' => 4]]
 ```
 
 ## Utility functions

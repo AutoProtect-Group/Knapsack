@@ -1,6 +1,6 @@
 <?php
 
-namespace DusanKasan\Knapsack\Exceptions;
+namespace AutoProtect\Knapsack\Exceptions;
 
 class ItemNotFound extends RuntimeException
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DusanKasan\Knapsack\Exceptions;
+namespace AutoProtect\Knapsack\Exceptions;
 
 use RuntimeException as CoreRuntimeException;
 

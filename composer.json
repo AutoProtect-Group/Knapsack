@@ -1,10 +1,10 @@
 {
-  "name": "dusank/knapsack",
+  "name": "autoprotect-group/knapsack",
   "license": "MIT",
   "type": "library",
   "description": "Collection library for PHP",
   "keywords": ["collections","sequences", "map", "reduce"],
-  "homepage": "https://github.com/DusanKasan/Knapsack",
+  "homepage": "https://github.com/AutoProtect-Group/Knapsack",
   "authors": [
     {
       "name": "Dusan Kasan",
@@ -14,16 +14,15 @@
     }
   ],
   "require-dev": {
-    "phpspec/phpspec": "^3.4",
-    "henrikbjorn/phpspec-code-coverage": "^3.0",
-    "squizlabs/php_codesniffer": "^3.4",
-    "phpmd/phpmd" : "^2.0",
-    "ciaranmcnulty/phpspec-typehintedmethods": "^2.0",
-    "phpunit/phpunit": "^5.7",
-    "symfony/console": "^2.7"
+    "phpspec/phpspec": "^7.2",
+    "squizlabs/php_codesniffer": "^3.6",
+    "phpmd/phpmd" : "^2.12",
+    "phpunit/phpunit": "^9.5",
+    "symfony/console": "^6.0",
+    "ext-dom": "*"
   },
   "require": {
-    "php": ">=5.6.0"
+    "php": ">=8.0"
   },
   "autoload": {
     "files": [
@@ -31,12 +30,13 @@
       "src/utility_functions.php"
     ],
     "psr-4": {
-      "DusanKasan\\Knapsack\\": "src/"
+      "AutoProtect\\Knapsack\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "DusanKasan\\Knapsack\\Tests\\Helpers\\": "tests/helpers/"
+      "tests\\AutoProtect\\Knapsack\\": "tests/",
+      "spec\\AutoProtect\\Knapsack\\": "tests/spec/"
     }
   }
 }
