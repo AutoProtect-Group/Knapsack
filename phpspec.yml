@@ -1,5 +1,5 @@
 suites:
   default:
     spec_path: tests
-    namespace: AutoProtect\Knapsack
-    psr4_prefix: AutoProtect\Knapsack
+    namespace: DusanKasan\Knapsack
+    psr4_prefix: DusanKasan\Knapsack

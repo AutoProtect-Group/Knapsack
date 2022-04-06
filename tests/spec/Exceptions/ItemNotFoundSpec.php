@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\AutoProtect\Knapsack\Exceptions;
+namespace spec\DusanKasan\Knapsack\Exceptions;
 
-use AutoProtect\Knapsack\Exceptions\ItemNotFound;
+use DusanKasan\Knapsack\Exceptions\ItemNotFound;
 use PhpSpec\ObjectBehavior;
 use RuntimeException;
 

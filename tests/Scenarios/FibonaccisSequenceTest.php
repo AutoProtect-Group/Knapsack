@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\AutoProtect\Knapsack\Scenarios;
+namespace tests\DusanKasan\Knapsack\Scenarios;
 
-use AutoProtect\Knapsack\Collection;
+use DusanKasan\Knapsack\Collection;
 use PHPUnit\Framework\TestCase;
 
 class FibonaccisSequenceTest extends TestCase
@@ -15,7 +15,7 @@ class FibonaccisSequenceTest extends TestCase
         $result = Collection::iterate([1, 1], function ($v) {
             return [$v[1], $v[0] + $v[1]];
         })
-            ->map('\AutoProtect\Knapsack\first')
+            ->map('\DusanKasan\Knapsack\first')
             ->take(5)
             ->values()
             ->toArray();

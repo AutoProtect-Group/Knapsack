@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\AutoProtect\Knapsack\Scenarios;
+namespace DusanKasan\Knapsack\Tests\Scenarios;
 
-use AutoProtect\Knapsack\Collection;
+use DusanKasan\Knapsack\Collection;
 use PHPUnit\Framework\TestCase;
 
 class MultipleOperationsTest extends TestCase

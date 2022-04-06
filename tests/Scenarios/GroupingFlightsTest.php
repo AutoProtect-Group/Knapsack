@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\AutoProtect\Knapsack\Scenarios;
+namespace tests\DusanKasan\Knapsack\Scenarios;
 
-use AutoProtect\Knapsack\Collection;
+use DusanKasan\Knapsack\Collection;
 use PHPUnit\Framework\TestCase;
 
 /**

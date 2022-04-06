@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\AutoProtect\Knapsack\Exceptions;
+namespace spec\DusanKasan\Knapsack\Exceptions;
 
-use AutoProtect\Knapsack\Exceptions\NoMoreItems;
-use AutoProtect\Knapsack\Exceptions\RuntimeException;
+use DusanKasan\Knapsack\Exceptions\NoMoreItems;
+use DusanKasan\Knapsack\Exceptions\RuntimeException;
 use PhpSpec\ObjectBehavior;
 
 /**

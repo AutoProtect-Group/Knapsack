@@ -1,6 +1,6 @@
 <?php
 
-use AutoProtect\Knapsack\Collection;
+use DusanKasan\Knapsack\Collection;
 use Symfony\Component\Console\Helper\Table;
 
 include_once __DIR__ . "/../../vendor/autoload.php";

@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\AutoProtect\Knapsack\Scenarios;
+namespace tests\DusanKasan\Knapsack\Scenarios;
 
-use AutoProtect\Knapsack\Collection;
+use DusanKasan\Knapsack\Collection;
 use PHPUnit\Framework\TestCase;
 
 class CallableFunctionNamesTest extends TestCase
@@ -14,7 +14,7 @@ class CallableFunctionNamesTest extends TestCase
     {
         $result = Collection::from([2, 1])
             ->concat([3, 4])
-            ->sort('\AutoProtect\Knapsack\compare')
+            ->sort('\DusanKasan\Knapsack\compare')
             ->values()
             ->toArray();
 

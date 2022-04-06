@@ -1,10 +1,10 @@
 <?php
 
-namespace AutoProtect\Knapsack;
+namespace DusanKasan\Knapsack;
 
 use ArrayIterator;
-use AutoProtect\Knapsack\Exceptions\InvalidArgument;
-use AutoProtect\Knapsack\Exceptions\InvalidReturnValue;
+use DusanKasan\Knapsack\Exceptions\InvalidArgument;
+use DusanKasan\Knapsack\Exceptions\InvalidReturnValue;
 use IteratorAggregate;
 use ReturnTypeWillChange;
 use Traversable;

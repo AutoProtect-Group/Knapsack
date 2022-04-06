@@ -30,13 +30,13 @@
       "src/utility_functions.php"
     ],
     "psr-4": {
-      "AutoProtect\\Knapsack\\": "src/"
+      "DusanKasan\\Knapsack\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "tests\\AutoProtect\\Knapsack\\": "tests/",
-      "spec\\AutoProtect\\Knapsack\\": "tests/spec/"
+      "tests\\DusanKasan\\Knapsack\\": "tests/",
+      "tests\\spec\\DusanKasan\\Knapsack\\": "tests/spec/"
     }
   }
 }

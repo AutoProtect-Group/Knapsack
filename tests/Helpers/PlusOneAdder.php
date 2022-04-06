@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\AutoProtect\Knapsack\Helpers;
+namespace tests\DusanKasan\Knapsack\Helpers;
 
 class PlusOneAdder
 {

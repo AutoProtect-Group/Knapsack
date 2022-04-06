@@ -1,10 +1,10 @@
 <?php
 
-namespace AutoProtect\Knapsack;
+namespace DusanKasan\Knapsack;
 
-use AutoProtect\Knapsack\Exceptions\InvalidArgument;
-use AutoProtect\Knapsack\Exceptions\ItemNotFound;
-use AutoProtect\Knapsack\Exceptions\NoMoreItems;
+use DusanKasan\Knapsack\Exceptions\InvalidArgument;
+use DusanKasan\Knapsack\Exceptions\ItemNotFound;
+use DusanKasan\Knapsack\Exceptions\NoMoreItems;
 use Iterator;
 use IteratorIterator;
 use Traversable;
@@ -194,7 +194,7 @@ function isNotEmpty($collection)
  */
 function frequencies($collection)
 {
-    return countBy($collection, '\AutoProtect\Knapsack\identity');
+    return countBy($collection, '\DusanKasan\Knapsack\identity');
 }
 
 /**
@@ -547,7 +547,7 @@ function countBy($collection, callable $function)
 {
     return map(
         groupBy($collection, $function),
-        '\AutoProtect\Knapsack\size'
+        '\DusanKasan\Knapsack\size'
     );
 }
 
@@ -1409,7 +1409,7 @@ function transpose($collection)
             ...toArray(
                 map(
                     $collection,
-                    'AutoProtect\Knapsack\toArray'
+                    'DusanKasan\Knapsack\toArray'
                 )
             )
         )
@@ -1431,7 +1431,7 @@ function extract($collection, $keyPath)
 
     $extractor = function ($coll) use ($pathParts) {
         foreach ($pathParts as $pathPart) {
-            $coll = flatten(filter($coll, '\AutoProtect\Knapsack\isCollection'), 1);
+            $coll = flatten(filter($coll, '\DusanKasan\Knapsack\isCollection'), 1);
 
             if ($pathPart != '*') {
                 $pathPart = str_replace(['\.', '\*'], ['.', '*'], $pathPart);

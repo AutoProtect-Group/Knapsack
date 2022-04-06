@@ -27,7 +27,7 @@
 - The project is ready for production use. No known bugs exist.
 
 ##2.0.0
-- Project moved to new global namespace DusanKasan (whole namespace is AutoProtect\Knapsack) to avoid conflicts. 
+- Project moved to new global namespace DusanKasan (whole namespace is DusanKasan\Knapsack) to avoid conflicts. 
 - Collection::realize was introduced to force materialization of the collection (turning lazy collection into non-lazy). 
 - Collection::concat and Collection::interleave are now variadic.
 - **Breaking change: toArray and Collection::toArray now behave more logicaly and do not convert items recursively.**
