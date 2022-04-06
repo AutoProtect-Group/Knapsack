@@ -1,6 +1,6 @@
 <?php
 
-namespace DusanKasan\Knapsack\Tests\Helpers;
+namespace tests\AutoProtect\Knapsack\Helpers;
 
 class Car extends Machine
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace DusanKasan\Knapsack\Tests\Scenarios;
+namespace tests\AutoProtect\Knapsack\Scenarios;
 
-use DusanKasan\Knapsack\Collection;
-use PHPUnit_Framework_TestCase;
+use AutoProtect\Knapsack\Collection;
+use PHPUnit\Framework\TestCase;
 
-class CallableFunctionNamesTest extends PHPUnit_Framework_TestCase
+class CallableFunctionNamesTest extends TestCase
 {
     /**
      * Example that it's possible to use callable function names as arguments.
@@ -14,7 +14,7 @@ class CallableFunctionNamesTest extends PHPUnit_Framework_TestCase
     {
         $result = Collection::from([2, 1])
             ->concat([3, 4])
-            ->sort('\DusanKasan\Knapsack\compare')
+            ->sort('\AutoProtect\Knapsack\compare')
             ->values()
             ->toArray();
 

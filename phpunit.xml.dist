@@ -2,8 +2,8 @@
 
 <phpunit bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite>
-            <directory>tests/scenarios</directory>
+        <testsuite name="Knapsack">
+            <directory>tests/Scenarios</directory>
         </testsuite>
     </testsuites>
 </phpunit>

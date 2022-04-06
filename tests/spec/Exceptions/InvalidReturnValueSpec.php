@@ -1,10 +1,9 @@
 <?php
 
-namespace spec\DusanKasan\Knapsack\Exceptions;
+namespace spec\AutoProtect\Knapsack\Exceptions;
 
-use DusanKasan\Knapsack\Exceptions\RuntimeException;
+use AutoProtect\Knapsack\Exceptions\RuntimeException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class InvalidReturnValueSpec extends ObjectBehavior
 {

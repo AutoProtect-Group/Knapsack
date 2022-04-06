@@ -1,11 +1,10 @@
 <?php
 
-namespace spec\DusanKasan\Knapsack\Exceptions;
+namespace spec\AutoProtect\Knapsack\Exceptions;
 
-use DusanKasan\Knapsack\Exceptions\InvalidArgument;
-use DusanKasan\Knapsack\Exceptions\RuntimeException;
+use AutoProtect\Knapsack\Exceptions\InvalidArgument;
+use AutoProtect\Knapsack\Exceptions\RuntimeException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 /**
  * @mixin InvalidArgument

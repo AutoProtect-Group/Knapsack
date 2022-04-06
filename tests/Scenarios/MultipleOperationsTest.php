@@ -1,11 +1,11 @@
 <?php
 
-namespace DusanKasan\Knapsack\Tests\Scenarios;
+namespace tests\AutoProtect\Knapsack\Scenarios;
 
-use DusanKasan\Knapsack\Collection;
-use PHPUnit_Framework_TestCase;
+use AutoProtect\Knapsack\Collection;
+use PHPUnit\Framework\TestCase;
 
-class MultipleOperationsTest extends PHPUnit_Framework_TestCase
+class MultipleOperationsTest extends TestCase
 {
     /**
      * Example of a longer pipeline. If this was real code, you should probably split it into smaller chunks.
