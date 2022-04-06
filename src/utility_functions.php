@@ -1,6 +1,6 @@
 <?php
 
-namespace AutoProtect\Knapsack;
+namespace DusanKasan\Knapsack;
 
 /**
  * Returns its argument.
