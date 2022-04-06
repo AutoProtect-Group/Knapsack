@@ -1,9 +1,7 @@
 # Knapsack
 **Collection pipeline library for PHP**
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5fcb3dc2-2061-4da3-853b-a5e2a35a35fb/mini.png)](https://insight.sensiolabs.com/projects/5fcb3dc2-2061-4da3-853b-a5e2a35a35fb) [![Build Status](https://scrutinizer-ci.com/g/AutoProtect-Group/Knapsack/badges/build.png?b=master)](https://scrutinizer-ci.com/g/AutoProtect-Group/Knapsack/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/AutoProtect-Group/Knapsack/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/AutoProtect-Group/Knapsack/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AutoProtect-Group/Knapsack/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AutoProtect-Group/Knapsack/?branch=master)
-
-Knapsack is a collection library for PHP >= 5.6 that implements most of the sequence operations proposed by [Clojures sequences](http://clojure.org/sequences) plus some additional ones. All its features are available as functions (for functional programming) and as a [collection pipeline](http://martinfowler.com/articles/collection-pipeline/) object methods.
+Knapsack is a collection library for PHP >= 8 that implements most of the sequence operations proposed by [Clojures sequences](http://clojure.org/sequences) plus some additional ones. All its features are available as functions (for functional programming) and as a [collection pipeline](http://martinfowler.com/articles/collection-pipeline/) object methods.
 
 The heart of Knapsack is its [Collection class](https://github.com/AutoProtect-Group/Knapsack/blob/master/src/Collection.php). However its every method calls a simple function with the same name that does the actual heavy lifting. These are located in `AutoProtect\Knapsack` namespace and you can find them [here](https://github.com/AutoProtect-Group/Knapsack/blob/master/src/collection_functions.php). Collection is a [Traversable](https://secure.php.net/manual/en/class.traversable.php) implementor (via [IteratorAggregate](https://secure.php.net/manual/en/class.iteratoraggregate.php)) that accepts Traversable object, array or even a callable that produces a Traversable object or array as constructor argument. It provides most of Clojures sequence functionality plus some extra features. It is also immutable - operations preformed on the collection will return new collection (or value) instead of modifying the original collection.
  
@@ -21,7 +19,7 @@ Check out the documentation (which is prettified version of this readme) at http
 Require this package using Composer.
 
 ```
-composer require dusank/knapsack
+composer require autoprotect-group/knapsack
 ```
 
 ## Usage
